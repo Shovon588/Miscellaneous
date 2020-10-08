@@ -221,8 +221,11 @@ function start() {
   let uuid = button.getAttribute("data-uuid");
 
   // Fetch button information from server
-  let url = "http://127.0.0.1:8000/invoice/payment-button-info/" + uuid + "/";
-  fetchButtonInfo(url);
+  let local_url =
+    "http://127.0.0.1:8000/invoice/payment-button-info/" + uuid + "/";
+  let ngrok_url =
+    "http://13e75745eb17.ngrok.io/invoice/payment-button-info/" + uuid + "/";
+  fetchButtonInfo(ngrok_url);
 
   let modal = document.querySelector(".enalo-button-input-fields");
   // let close_button = document.querySelector(".enalo-close-button");
@@ -267,9 +270,14 @@ function paymentHandler() {
       "Amount can not be negative";
   } else {
     console.log(parseInt(amount));
-    url = "http://127.0.0.1:8000/invoice/payment-button-action/" + slug + "/";
+    let local_url =
+      "http://127.0.0.1:8000/invoice/payment-button-action/" + slug + "/";
+    let ngrok_url =
+      "http://13e75745eb17.ngrok.io/invoice/payment-button-action/" +
+      slug +
+      "/";
 
-    fetch(url, {
+    fetch(ngrok_url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
