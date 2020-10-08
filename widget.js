@@ -185,6 +185,7 @@ function fetchButtonInfo(url) {
 }
 
 function start() {
+  console.log("Loading CSS");
   loadCSS();
 
   appendToWidget(
